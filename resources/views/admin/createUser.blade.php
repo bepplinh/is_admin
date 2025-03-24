@@ -1,3 +1,5 @@
+@extends('layout.adminDashboard')
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +10,6 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h2>Create User</h2>
-        
         @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
@@ -57,3 +57,5 @@
     </div>
 </body>
 </html>
+
+@endsection

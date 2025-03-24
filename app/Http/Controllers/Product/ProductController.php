@@ -14,7 +14,11 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::paginate(8);
-        return view('product.listProduct')->with('products', $products);
+        return view('product.listProduct')->with([
+            'products'=> $products,
+            'title' => 'Product List',  
+            'heading' => 'Product List',
+        ]);
     }
 
     /**

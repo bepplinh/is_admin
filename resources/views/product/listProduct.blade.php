@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layout.adminDashboard')
 @section('content')
 <!DOCTYPE html>
 <html lang="en">

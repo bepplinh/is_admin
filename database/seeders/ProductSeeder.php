@@ -14,15 +14,6 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        $faker = Faker::create();
-
-        for ($i = 0; $i < 20; $i++) {
-            Product::create([
-                'name' => $faker->word, // Tên sản phẩm ngẫu nhiên
-                'description' => $faker->sentence, // Mô tả sản phẩm
-                'price' => $faker->randomFloat(2, 10, 1000), // Giá từ 10 - 1000$
-                'quantity' => $faker->numberBetween(1, 100), // Số lượng từ 1 - 100
-            ]);
-        }
+        Product::factory(20)->create();
     }
 }

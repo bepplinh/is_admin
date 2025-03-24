@@ -1,15 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+
 
 class createUserController extends Controller
 {
     public function showCreateUser() {
-        return view('createUser');
+        return view('admin.createUser')->with([
+            'title' => 'Create User',
+            'heading' => 'Create User',
+        ]);
     }
     public function createUser(Request $request) {
         $request->validate([

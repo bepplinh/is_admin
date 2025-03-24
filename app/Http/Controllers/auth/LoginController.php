@@ -20,11 +20,13 @@ class LoginController extends Controller
         $status = Auth::attempt(['username' => $username, 'password' => $password]);
         if ($status) {
             $user = Auth::user();
-            $url = '/';
-            if($user->is_admin) {
-                $url = '/admin';
+            $title = $user->is_admin ? 'Admin Dashboard' : 'User Dashboard';
+            $heading = $user->is_admin ? 'Welcome, Admin!' : 'Welcome, User!';
+            
+            if ($user->is_admin) {
+                return view('admin.indexAdmin', compact('title', 'heading'));
             }
-            return Redirect::to($url)->with('user', $user);
+            return view('client.home', compact('title', 'heading'));
         }
         return back()->withErrors(['username' => 'Invalid credentials']);
     }

@@ -1,58 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login Form</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .login-container {
-            max-width: 400px; /* Giới hạn chiều rộng */
-            width: 100%;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-    </style>
-</head>
-<body class="d-flex justify-content-center align-items-center vh-100 bg-light">
+@extends('layout.clientApp')
+@section('content')
+<main class="pt-90 d-flex justify-content-center">
+    <div class="mb-4 pb-4"></div>
+    <section class="login-register container" style="width: 33.33%; margin: auto;">
+      <ul class="nav nav-tabs mb-5" id="login_register" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link nav-link_underscore active" id="login-tab" data-bs-toggle="tab" href="#tab-item-login"
+            role="tab" aria-controls="tab-item-login" aria-selected="true">Login</a>
+        </li>
+      </ul>
+      <div class="tab-content pt-2" id="login_register_tab_content">
+        <div class="tab-pane fade show active" id="tab-item-login" role="tabpanel" aria-labelledby="login-tab">
+          <div class="login-form">
+            <form method="POST" action="{{ route('actionLogin') }}" name="login-form" class="needs-validation" novalidate>
+              @csrf
+              <div class="form-floating mb-3">
+                <input class="form-control form-control_gray" id="username" name="username" type="text" required autocomplete="username" autofocus>
+                <label for="email">Username *</label>
+              </div>
 
-    <div class="login-container">
-        <h3 class="text-center mb-4">Sign In</h3>
-        <form method="POST" action="{{ route('actionLogin') }}">
-            @csrf
-            <!-- Email input -->
-            <div class="mb-3">
-                <label for="form2Example1" class="form-label">Username</label>
-                <input type="text" name="username" id="username" class="form-control" />
-            </div>
+              <div class="pb-3"></div>
 
-            <!-- Password input -->
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" name="password" id="password" class="form-control" />
-            </div>
+              <div class="form-floating mb-3">
+                <input id="password" type="password" class="form-control form-control_gray" name="password" required autocomplete="current-password">
+                <label for="password">Password *</label>
+              </div>
 
-            <!-- Remember me & Forgot password -->
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="form2Example31" checked />
-                    <label class="form-check-label" for="form2Example31">Remember me</label>
-                </div>
-                <a href="#" class="text-primary">Forgot password?</a>
-            </div>
+              <button class="btn btn-primary w-100 text-uppercase" type="submit">Log In</button>
 
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-primary w-100">Sign in</button>
-
-            <!-- Register link -->
-            <div class="text-center mt-3">
-                <p>Not a member? <a href="#" class="text-primary">Register</a></p>
-            </div>
-        </form>
-    </div>
-
-</body>
-</html>
+              <div class="customer-option mt-4 text-center">
+                <span class="text-secondary">No account yet?</span>
+                <a href="register.html" class="btn-text js-show-register">Create Account</a> | <a href="my-account.html" class="btn-text js-show-register">My Account</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+</main>
+@endsection

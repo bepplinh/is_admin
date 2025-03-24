@@ -13,11 +13,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-
-        $user = new User;
-        $user->username = 'admin';
-        $user->password = bcrypt('123');
-        $user->is_admin = True;
-        $user->save();
+        $this->call([
+            ProductSeeder::class,
+            CartSeeder::class,
+            CartItemSeeder::class,
+            OrderSeeder::class,
+            OrderItemSeeder::class,
+            UserSeeder::class
+        ]);
     }
 }
